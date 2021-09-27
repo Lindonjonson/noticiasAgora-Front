@@ -30,10 +30,8 @@
   
   </div>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Cadastrrar</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Cadastrar</button>
   </form>
-  {{Titulo}},{{conteudo}}
 </main>
 <br>
 <hr>
@@ -48,8 +46,6 @@
       unchecked-value="not_accepted"
     >
     </b-form-checkbox>
-
-    <div>State: <strong>{{ status }}</strong></div>
   </div>
     </div>
 
@@ -80,6 +76,14 @@ import Cookie from 'js-cookie';
          }
          if(this.status == true ){
           this.status = 1; 
+         }
+         if(this.Titulo == ""){
+           alert("informe todos os campos");
+            window.location.href = 'CadastroNoticias'
+         }
+         if(this.conteudo == ""){
+           alert("informe todos os campos");
+            window.location.href = 'CadastroNoticias'
          }
 
             const payload = {

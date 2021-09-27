@@ -139,6 +139,15 @@ export default {
          if(this.post.status == true ){
           this.post.status = 1; 
          }
+         if(this.post.Titulo == ""){
+           alert("informe todos os campos");
+            window.location.href = 'list'
+         }
+         if(this.post.conteudo == ""){
+           alert("informe todos os campos");
+            window.location.href = 'list'
+         }
+         
 
             const payload = {
                 conteudo: this.post.conteudo,
@@ -161,6 +170,7 @@ export default {
             .then(res => {
               console.log(res);
              alert("Noticia Atualizada com sucesso!!");
+               window.location.href = 'list'
             })
         },
     },  
