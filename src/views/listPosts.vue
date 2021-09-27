@@ -79,20 +79,16 @@
       value="accepted"
       unchecked-value="not_accepted"
     >
-      I accept the terms and use
     </b-form-checkbox>
-
-    <div>State: <strong>{{ status }}</strong></div>
   </div>
   
   
   </div>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Atualizar</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>
-<!--Fim-->>
+<!--Fim-->
     </div>
   </div>
 </div>
