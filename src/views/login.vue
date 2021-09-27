@@ -62,6 +62,7 @@ export default {
               if(res.token === undefined){
                 alert("ERRO AO ENTRAR")
                 window.location.href = 'login'
+                Cookie.remove('meu_token')  // return this
               }
               else{
                  alert("Login Efetuado com sucesso")
