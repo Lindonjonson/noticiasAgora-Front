@@ -87,6 +87,10 @@
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Atualizar</button>
   </form>
+     <br>
+  <form @submit.stop.prevent="excluir">
+  <button class="w-100 btn btn-lg btn-danger" type="submit">Excluir</button>
+  </form>
 </main>
 <!--Fim-->
     </div>
@@ -123,6 +127,27 @@ export default {
             this.post = posts;
             
           },
+          excluir(){
+            const token = Cookie.get('meu_token');
+
+            fetch('http://127.0.0.1:8000/api/v1/posts/'+this.post.id,{
+                method: 'DELETE',
+                headers:{
+                 'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization':'Bearer '+ token
+                },
+            
+            })
+            .then(response => response.json())
+            .then(res => {
+              console.log(res);
+             alert("POST DELETADO");
+               window.location.href = 'list'
+            })
+        },
+
+         
         submit(){
       
          
