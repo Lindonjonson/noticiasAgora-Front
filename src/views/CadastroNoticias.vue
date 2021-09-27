@@ -1,10 +1,11 @@
 <template>
 
     <div>
+    <div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Cadastro de noticias</h4>
+</div>
         <main class="form-signin">
   <form @submit.stop.prevent="submit">
-
-    <h1 class="h3 mb-3 fw-normal">Cadastre sua noticia</h1>
 
     <div class="form-floating">
       <input 

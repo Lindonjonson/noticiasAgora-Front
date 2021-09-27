@@ -3,7 +3,7 @@
         <main class="form-signin">
   <form @submit.stop.prevent="submit">
  
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <h2 class="h3 mb-3 fw-normal">Faça Login para continuar</h2>
 
     <div class="form-floating">
       <input 
@@ -16,12 +16,6 @@
       v-model="password"
       type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
@@ -64,7 +58,16 @@ export default {
             .then(response => response.json())
             .then(res => {
               Cookie.set('meu_token', res.token);
-              alert("token ok");
+              
+              if(res.token === undefined){
+                alert("ERRO AO ENTRAR")
+                window.location.href = 'login'
+              }
+              else{
+                 alert("Login Efetuado com sucesso")
+                window.location.href = 'list'
+              }
+             
             })
         },
     },

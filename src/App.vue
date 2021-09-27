@@ -4,6 +4,7 @@
       <router-link to="/">Ultimas Noticias</router-link> |
       <router-link to="/list">Minhas Noticias</router-link>|
       <router-link to="/CadastroNoticias">Cadastro de noticias</router-link> |
+      <router-link to="/logout">logout</router-link> |
 
     </div>
     <router-view/>

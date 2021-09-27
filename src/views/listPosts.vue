@@ -16,7 +16,7 @@
           Noticia Desativada
       </div>
     <p class="card-text">{{post.conteudo}}</p>
-    {{post.id}}
+    
     <!-- Botão da modal-->
 
    <button type="button" @click="editar(post)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -46,7 +46,7 @@
          
   <form @submit.stop.prevent="submit">
 
-    <h1 class="h3 mb-3 fw-normal">Edite sua noticia {{}}</h1>
+    <h1 class="h3 mb-3 fw-normal">Edite sua noticia</h1>
 
     <div class="form-floating">
       <input 
@@ -65,16 +65,16 @@
       <div>
     
 <label v-if="post.status == 1"><input 
-   v-model="status"
+   v-model="post.status "
    type="checkbox" id="horns" name="horns" checked></label>
 <label v-else><input 
-   v-model="status"
+   v-model="post.status"
    type="checkbox" id="horns" name="horns"></label>
   <label for="horns">Ativar Noticia?</label>
    <div>
     <b-form-checkbox
       id="checkbox-1"
-      v-model="status"
+      v-model="post.status"
       name="checkbox-1"
       value="accepted"
       unchecked-value="not_accepted"
@@ -91,7 +91,6 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">Atualizar</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
-  {{post.Titulo}}
 </main>
 <!--Fim-->>
     </div>
@@ -129,42 +128,39 @@ export default {
             
           },
         submit(){
-        alert(this.post.status);
-
-         if(this.status == ""){
-          this.status = 0;  
+      
+         
+         if(this.post.status == ""){
+         this.post.status = 0;  
          }
-         if(this.status == false){
-          this.status = 0; //noticia desativada
+         if(this.post.status == false){
+         this.post.status = 0; //noticia desativada
          }
-         if(this.status == true ){
-          this.status = 1; 
+         if(this.post.status == true ){
+          this.post.status = 1; 
          }
 
             const payload = {
-                conteudo: this.conteudo,
-                Titulo: this.Titulo,
-                status: this.status,
-
+                conteudo: this.post.conteudo,
+                Titulo: this.post.Titulo,
+                status: this.post.status,
             }; 
             
             const token = Cookie.get('meu_token');
 
-            fetch('http://127.0.0.1:8000/api/v1/posts',{
-                method: 'POST',
+            fetch('http://127.0.0.1:8000/api/v1/posts/'+this.post.id,{
+                method: 'PUT',
                 headers:{
                  'Content-Type': 'application/json',
                   'Accept': 'application/json',
                   'Authorization':'Bearer '+ token
                 },
-             
                 body: JSON.stringify(payload)
             })
             .then(response => response.json())
             .then(res => {
               console.log(res);
-              alert("Post Cadastrado Com sucesso!");
-              
+             alert("Noticia Atualizada com sucesso!!");
             })
         },
     },  

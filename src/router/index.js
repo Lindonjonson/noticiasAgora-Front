@@ -4,7 +4,7 @@ import login from '../views/login'
 import Guard from '../services/middleware'
 import Home from '../views/Home.vue'
 import listPosts from '../views/listPosts'
-import editPost from '../views/editPost'
+import logout from '../views/logout'
 
 Vue.use(VueRouter)
 
@@ -13,6 +13,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: logout
   },
   {
     path: '/',
@@ -26,12 +31,7 @@ const routes = [
     component: listPosts,
     beforeEnter: Guard.auth,
   },
-  {
-    path: '/editPost',
-    name: 'editPost',
-    component: editPost,
-    beforeEnter: Guard.auth,
-  },
+  
   {
     path: '/CadastroNoticias',
     name: 'CadastroNoticias',
